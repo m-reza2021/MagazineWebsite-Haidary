@@ -1,0 +1,51 @@
+{% load static %}
+{% url 'home' as home %}
+{% url 'posts' as posts %}
+
+<header id="up">
+    <div class="navigation">
+        <div class="header-img">
+            <a href="{{ home }}"><img src="{% static 'images/logo.png' %}"></a>
+        </div>
+        <div class="nav-bar">
+            <div>
+                <nav class="nav" id="myTopnav">
+                    <a href="{{ home }}">خانه</a>
+                    <a href="{{ posts }}">همه مطالب</a>
+                    {% for category in categories %}
+                    <a href="{{ category.get_absolute_url }}">{{ category }}</a>
+                    {% endfor %}
+                    {% if request.user.is_authenticated %}
+                    <a href="/saved-list">مطالب ذخیره شده</a>
+                    <a href="/logout">خروج</a>
+                    <span class="logged-user"><a href="/profile">{{ request.user.get_full_name }}</a></span>
+                    {% else %}
+                    <a href="/login">ورود و ثبت نام</a>
+                    {% endif %}
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </nav>
+            </div>
+        </div>
+        <script>
+                function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "nav") {
+        x.className += " responsive";
+      } else {
+        x.className = "nav";
+      }
+    }
+
+        </script>
+    </div>
+
+
+    <div class="search">
+        <form action="/posts/search?{{ request.GET.q }}" method="get" class="search-form">
+            <input type="search" name="q" value="{{ request.GET.q }}" placeholder="جستجو">
+            <button><i class="fas fa-search search-icon"></i></button>
+        </form>
+    </div>
+</header>

@@ -1,0 +1,102 @@
+{% load static %}
+{% load jalali_tags %}
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-column1">
+            <div class="footer-title">آنچه دیگران بیشتر خواندند</div>
+            {% for post in posts|slice:":2" %}
+            <div class="footer-clomn1-content">
+                <div style="width: 90px; height: 90px;">
+                    <div class="img-cover" style="background-image: url({{ post.image.url }});"></div>
+                </div>
+                <div class="footer-colomn1-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
+            </div>
+            <div class="footer-column1-date">{{ post.issue_date|to_jalali:'%Y/%m/%d' }}</div>
+            <div class="footer-column1-date"></div>
+            {% endfor %}
+        </div>
+
+        <div class="footer-column1">
+
+            <div class="footer-title">کمی از تکنالوژی فاصله بگیرید</div>
+            {% for post in posts|slice:"2:4" %}
+            <div class="footer-clomn1-content">
+                <div style="width: 90px; height: 90px;">
+                    <div class="img-cover" style="background-image: url({{ post.image.url }});"></div>
+                </div>
+                <div class="footer-colomn1-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
+            </div>
+            <div class="footer-column1-date">{{ post.issue_date|to_jalali:'%Y/%m/%d' }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="footer-column3">
+            <div class="footer-title">کاربران بیشتر به دنبال چه هستند؟</div>
+            {% for post in posts|slice:":5" %}
+            <div class="footer-column3-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
+            {% endfor %}
+        </div>
+
+        <div class="footer-column3">
+            <div class="footer-title">کاربران بیشتر به دنبال چه هستند؟</div>
+            {% for post in posts|slice:":4" %}
+            <div class="footer-column3-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
+            {% endfor %}
+
+            <div class="footer-title" style="margin-right: 20px; margin-top: 20px;">عضویت در خبرنامه</div>
+            <div class="main-newsletter">
+                <div class="newsletter-pocket">
+                    <i class="far fa-envelope"></i>
+                </div>
+                <div class="newsletter">
+                    <form class="footer-form">
+                        <input class="focus footer-input" type="text" placeholder="ایمیل خود را وارد کنید">
+                        <button class="submit" type="submit">تایید</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer-line"></div>
+
+    <div class="footer-copyright">
+        <div><p class="footer-terabyte">طراحی و توسعه توسط <a href="https://t.me/myAccount456">محمدرضا حیدری</a></p>
+        </div>
+    </div>
+
+</footer>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">
+    <li class="up-arrow up"></li>
+</button>
+
+<script>
+        //Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+</script>
+<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<script src="{% static 'js/all.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+

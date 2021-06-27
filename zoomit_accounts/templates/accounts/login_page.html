@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">-->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <title>صفحه ورود</title>
+</head>
+<body>
+    <main>
+        <div class="login-container">
+            <div class="row">
+                <div class="row-right">
+                    <div class="login-box">
+                        <form class="login-form" method="post">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <label for="">نام کاربری:</label>
+                                {{ login_form.username }}
+                            </div>
+                            <div class="input-group">
+                                <label for="">رمز عبور:</label>
+                                {{ login_form.password }}
+                            </div>
+                            <div class="input-group">
+                                {% for error in login_form.username.errors %}
+                                <p class="error-message">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <p class="do-you-have">
+                                    حساب کاربری ندارید ؟
+                                    <a href="/signup">ایجاد حساب کاربری</a>
+                                    کمتر از یک دقیقه زمان شما را خواهد گرفت.
+                                </p>
+                                <p><a href="/"><i class="fa fa-home"></i></a></p>
+                            </div>
+                            <div class="submit-btn-container">
+                                <input value="ورود" type="submit">
+                            </div>
+                        </form>
+
+                        <div class="social-icons">
+                            <a href=""><i class="fab fa-facebook-f"></i></a>
+                            <a href=""><i class="fab fa-google-plus-g"></i></a>
+                            <a href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row-left">
+                    <div class="img-container">
+                        <img src="{% static 'svg/login.svg' %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<script src="{% static 'js/all.min.js' %}"></script>
+{% if messages %}
+    {% for message in messages %}
+        <script>alert('{{ message }}')</script>
+    {% endfor %}
+{% endif %}
+</html>

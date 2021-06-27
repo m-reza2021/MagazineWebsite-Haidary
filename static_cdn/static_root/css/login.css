@@ -1,0 +1,122 @@
+@font-face{
+    font-family: "Shabname";
+    font-style: normal;
+    src: url("../fonts/Shabnam-FD.ttf");
+}
+
+*{
+    margin:0;
+    padding: 0;
+    font-family: 'Shabnam', sans-serif;
+}
+
+body{
+    direction: rtl;
+    font-size: 16px;
+}
+.row{
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+    padding: 30px;
+    gap: 30px;
+    
+}
+
+.login-container{
+    /* background: radial-gradient(circle farthest-corner at 10% 20%, rgba(90,92,106,1) 0%, rgba(32,45,58,1) 81,3%) !important;*/
+     height: 100vh;
+    /* background-color: rgb(13, 66, 80); */
+    background-image: linear-gradient(rgb(15, 29, 68), rgb(25, 57, 94), rgb(27, 27, 109));
+}
+
+.login-container .row .row-right .login-box{
+    font-size: .8em;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, .2);
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, .1);
+    padding: 35px 40px;
+    color: white;
+    margin: 40px;
+}
+
+.login-box form{
+    
+}
+
+.login-box form .input-group{
+    margin: 10px 0px;
+    
+}
+
+.login-box form .input-group label{
+    display: block;
+}
+
+.login-box form .input-group input{
+    outline: none;
+    background: none;
+    border: 2px solid white;
+    border-radius: 20px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    color: white;
+}
+.login-box form .input-group input:focus{
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, .8);
+}
+
+.login-box form .do-you-have{
+
+}
+
+.login-box form .do-you-have a{
+    color: #eb4d4b;
+    text-decoration: none;
+}
+.login-box form .do-you-have a:hover{
+    color: rgb(175, 64, 44);
+    text-decoration: none;
+}
+.login-box .submit-btn-container{
+    text-align: center;
+    margin: 30px;
+}
+
+.login-box .submit-btn-container input{
+    outline: none;
+    cursor: pointer;
+    background-color: #eb4d4b;;
+    color: white;
+    padding: 10px 40px;
+    border: none;
+    border-radius: 35px;
+    font-size: 1.4em;
+    letter-spacing: 2px;
+    vertical-align: center;
+}
+.login-box .submit-btn-container input:hover{
+    background-color:  rgb(175, 64, 44);
+    
+}
+
+.social-icons{
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid rgba(255, 255, 255, .8);
+    padding-top: 30px;
+
+}
+.social-icons a{
+    color: white;
+    font-size: 2em;
+}
+.social-icons a i{
+    
+}
+.img-container{
+    
+}
+.img-container img{
+    
+}

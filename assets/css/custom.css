@@ -1,0 +1,414 @@
+@font-face{
+    font-family: "Shabnam";
+    font-style: normal;
+    src: url("../fonts/Shabnam-FD.ttf");
+}
+
+*, body{
+    font-family: 'Shabnam', sans-serif !important;
+}
+
+a{
+    text-decoration: none !important;
+    color: unset;
+}
+
+.content-part{
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    padding: 10px;
+    height: auto;
+}
+
+.content-part .img-content{
+    width: 250px;
+}
+
+.archive-title {
+    text-decoration: none;
+}
+
+.single-page-text p{
+    text-align: justify !important;
+}
+
+.page-numbers ul li:hover {
+    background-color: red;
+}
+
+.page-numbers ul li:hover a {
+    color: white;
+}
+
+.category-container{
+    padding: 20px;
+}
+
+.archive-part{
+    justify-content: unset;
+    display: grid !important;
+    grid-template-columns: 2fr 4fr;
+    grid-gap: 20px;
+}
+
+.archive-part .archive-image-container{
+    width: 100%;
+    height: 100%;
+}
+
+.archive-part .archive-image-container div{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+.img-archive{
+    width: 40%;
+}
+
+.request{
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.login-form:hover{
+    width: 100% !important;
+    background-color: transparent !important;
+}
+
+.login-form:hover input[type=submit]{
+    display: inline;
+}
+
+.signup-form:hover{
+    width: 100%;
+    background-color: transparent;
+}
+
+.signup-form:hover input[type=submit]{
+    display: inline;
+}
+
+.login-container {
+    height: unset;
+}
+
+.search-form button{
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.search-icon{
+    font-size: 20px;
+    color: black;
+}
+
+.search-form:hover button{
+    background: black;
+}
+
+.search-form:hover button:hover{
+    cursor: pointer;
+}
+
+.search-form:hover button .search-icon{
+    color: rgba(202, 202, 202);
+}
+
+.error-message{
+    display: inline-block;
+    background: red;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.savelist-form:hover{
+    width: fit-content !important;
+    background-color: transparent !important;
+}
+
+.bio-left .save-post{
+    height: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.saved-thick{
+    background: green;
+    color: white;
+    padding: 5px 15px;
+    font-size: .8em;
+}
+
+.saved-list-container{
+    width: 60%;
+    margin: 0 auto;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.saved-list-table{
+    border: 1px solid black;
+    width: 100%;
+}
+
+.saved-list-table thead tr{
+    background: red;
+}
+
+.saved-list-table thead tr td{
+    padding: 10px;
+    color: white;
+}
+
+.saved-list-table tbody tr:nth-child(odd){
+    background: #ededed;
+}
+
+.saved-list-table tbody tr td:first-child{
+    width: 80%;
+}
+
+.saved-list-table tbody tr:hover{
+    background: #ff01010f;
+}
+
+.saved-list-table tbody tr td{
+    padding: 10px;
+}
+
+.read-button{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.read-button:hover{
+    display: block;
+    color: white;
+    width: 100%;
+    height: 100%;
+    background: red;
+    text-align: center;
+}
+
+.delete-saved{
+    text-align: center !important;
+    margin: 0 auto;
+}
+
+.delete-saved:hover{
+    width: auto;
+    background-color: unset;
+    cursor: unset;
+}
+
+.delete-saved button{
+    border: none;
+    color: red;
+    padding: 10px;
+    text-align: center;
+    background: unset;
+}
+
+.delete-saved button:hover{
+    color: white;
+    background: red;
+    cursor: pointer;
+}
+
+.logged-user{
+    display: inline-block;
+    background: red;
+    color: black;
+    padding: 0 10px;
+}
+
+.logged-user a:hover{
+    color: white !important;
+}
+
+.dashboard{
+    padding: 50px 100px;
+}
+
+.user-dashboard{
+    display:grid;
+    grid-template-columns: 2fr 4fr;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid black
+}
+
+.user-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-image{
+    width: 100%;
+    height: 100%;
+}
+
+.user-image .form-container{
+    width: 100%;
+}
+
+
+.profile-form{
+    width: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profile-form input[type='file']{
+    display: none;
+}
+
+.file-name{
+    display: none;
+}
+
+.image-preview{
+    display: none;
+}
+
+.profile-form:hover{
+    width: auto;
+    background-color: transparent;
+    cursor: unset;
+}
+.profile-form:hover profile-submit-button{
+    display: inline-block;
+}
+
+.user-image-container{
+    width: 300px;
+    height: fit-content;
+    margin-bottom: 20px;
+}
+
+/*.user-image-container::after{
+    position: absolute;
+    content: "";
+    background-color: red;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}*/
+
+.image-preview{
+    width: 100%;
+    position: relative;
+}
+
+.image-preview:before{
+    content: "";
+    width: 100%;
+    height: 100%:
+    background: #cccccc;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.profile-image-upload-label{
+    background: white;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.profile-form input[type=submit]{
+    background: white;
+    padding: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.update-profile-form:hover{
+    width: auto !important;
+    background-color: transparent !important;
+    cursor: unset;
+}
+
+.update-profile-form div.form-control{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+    margin: 10px 0;
+    width: 60%;
+}
+
+.form-control div ul li{
+    font-size: .8rem;
+    color: red;
+}
+
+.update-profile-form div input{
+    padding: 5px;
+    outline: none;
+    border: none;
+}
+
+div.submit-button-container{
+    display: flex;
+    justify-content: flex-end;
+    width: 60%;
+}
+
+div.submit-button-container button{
+    background: white;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+div.submit-button-container button:hover{
+    background: red;
+    color: white;
+    cursor: pointer;
+}
+
+.comment-reply-form:hover{
+    width: auto;
+    background-color: transparent;
+    cursor: unset;
+}
+
+.reply-text-area{
+    width: 100%;
+    outline: none;
+    padding: 5px;
+    border: none;
+}
+
+.single-page-form{
+    margin-top: 10px !important;
+}
+
+.left-sidebar{
+    position: sticky;
+}
+
+@media screen and (max-width:991px){
+    .request{
+    grid-template-columns: repeat(3, 1fr);
+    }
+    .img-archive{
+        height: 100%;
+    }
+}

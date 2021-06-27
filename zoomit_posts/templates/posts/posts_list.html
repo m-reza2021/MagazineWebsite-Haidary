@@ -1,0 +1,80 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+{% load render_partial %}
+{% load jalali_tags %}
+
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/category.css' %}">
+{% endblock %}
+{% block content %}
+<section class="category-container">
+        <section class="content">
+            {% if request.path == '/list' %}
+            {% else %}
+            <div class="category-archive-main-title">
+                {{ category_name }}
+                {{ tag_name }}
+            </div>
+            {% endif %}
+            <!-- 10 part in content -->
+            <div class="archive-content">
+                {% for post in page_obj %}
+                <div class="archive-part">
+                    <div class="archive-image-container">
+                        <div class="img-cover img-archive" style="background-image: url({{ post.image.url }});"></div>
+                    </div>
+                    <div class="archive-context">
+                        <div><p class="archive-category">{{ post.category }}</p></div>
+                            <div><a class="archive-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
+                                <div><a class="info">{{ post.author.get_full_name }} - {{ post.issue_date|to_jalali:"%Y/%m/%d" }}</a></div>
+                                    <div><p class="archive-text">{{ post.excerpt }}</p></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="content-footer">
+                <div class="page-numbers-text">
+                    {{page_obj.number}} از {{ page_obj.paginator.num_pages }}
+                </div>
+                <div class="page-numbers">
+                    <ul>
+                        {% if page_obj.has_previous %}
+                        <a href="
+                            {% if request.path == '/posts/search' %}
+                            ?q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}
+                            {% else %}
+                            ?page={{ page_obj.previous_page_number }} {% endif %}"
+                           class="arrow right"></a>
+                        {% endif %}
+                        {% for page in paginator.page_range %}
+                        <li
+                           {% if page == page_obj.number %}
+                           style="background-color: red"
+                           {% endif %}
+                        ><a href="
+                        {% if request.path == '/posts/search' %}
+                        ?q={{ request.GET.q }}&page={{ page }}
+                        {%else%}
+                        ?page={{ page }}
+                        {% endif %}"
+                        >{{ page }}</a></li>
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                        <a href="
+                            {% if request.path == '/posts/search' %}
+                            ?q={{ request.GET.q }}&page={{ page_obj.next_page_number }}
+                            {% else %}
+                            ?page={{ page_obj.next_page_number }} {% endif %}"
+                           class="arrow left"></a>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="left-sidebar">
+            {% render_partial 'posts_sidebar' %}
+        </section>
+    </section>
+{% endblock %}

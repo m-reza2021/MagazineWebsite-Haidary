@@ -1,0 +1,283 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+{% load jalali_tags %}
+
+{% block content %}
+<!-- main  -->
+<section id="top" class="main-1 padding-main">
+    <div class="main-1-right">
+        <div class="main-1-right-1">
+            <div class="main-1-right-part1 black">
+                {% for post in posts|slice:":1" %}
+                <a class="img-cover" style="background-image: url({{ post.image.url }})"></a>
+                <a href="{{ post.get_absolute_url }}" class="main-title">{{ post.title }}</a>
+                {% endfor %}
+            </div>
+            <div class="main-1-right-part">
+                {% for post in posts|slice:"1:3" %}
+                <div class="main-1-right-part-bottom black">
+                    <a class="img-cover" style="background-image: url({{ post.image.url }})"></a>
+                    <a class="main-title-small" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="main-1-right-2">
+            {% for post in posts|slice:"3:5" %}
+            <div class="main-1-right-2-part black">
+                <a class="img-cover" style="background-image: url({{ post.image.url }})"></a>
+                <a class="main-title-small" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </div>
+            {% endfor %}
+            {% for post in posts|slice:"7:7" %}
+            <div class="main-1-right-2-part black">
+                <a class="img-cover" style="background-image: url({{ post.image.url }})"></a>
+                <a class="main-title-small" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="main-1-left">
+        {% for ad in ads|slice:":2" %}
+        <div class="ads-part">
+            <a class="img-cover main-ads" href="{{ ad.link }}"
+               style="background-image: url({{ ad.image.url }})"></a>
+            <div class="ads-label">AD</div>
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+<!-- پیشنهاد سردبیر -->
+<section class="main-request">
+    <div class="request-title">پیشنهاد سردبیر</div>
+    <section class="request padding-main">
+        {% for post in posts|slice:":5" %}
+        <div class="request-part1">
+            <div class="img-cover request-img" style="background-image: url({{ post.image.url }});"></div>
+            <div class="request-text">
+                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+</section>
+
+<!-- main -->
+<section class="main">
+
+    <!-- right Side Bar -->
+    <section class="right-sidebar">
+        <!-- ads -->
+        {% for ad in ads|slice:":1" %}
+        <div class="right-sidebar-ads">
+            <a href="{{ ad.link }}"><div class="img-cover" style="background-image: url({{ ad.image.url }});"></div></a>
+            <div class="sidebar-ads">AD</div>
+        </div>
+        {% endfor %}
+        <!-- latest posts -->
+        <div class="most-visited-main-title">پربازدید ترین مطالب</div>
+        {% for post in posts|slice:":5" %}
+        <div class="most-visited-posts">
+            <div class="img-cover most-visited-img" style="background-image: url({{ post.image.url }});"></div>
+            <div class="most-visited-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
+        </div>
+        {% endfor %}
+    </section>
+    <!-- content -->
+    <section class="content">
+        <div class="content-main-title">مطالب جدید</div>
+        <!-- 10 part in content -->
+        <div class="main-content">
+            {% for post in main_posts %}
+            <div class="content-part">
+                <div class="img-cover img-content" style="background-image: url({{ post.image.url }});"></div>
+                <div class="context-content">
+                    <div><p class="category">{{ post.category }}</p></div>
+                    <div><a class="content-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    </div>
+                    <div><a class="info">{{ post.author.get_full_name }} | {{ post.issue_date|to_jalali:'%Y/%m/%d' }} </a></div>
+                    <div><p class="content-text">{{ post.excerpt }}</p></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="content-footer">
+            <div class="page-numbers-text">
+                {{ pages.number }} از {{ pages.paginator.num_pages }}
+            </div>
+            <div class="page-numbers">
+                <ul>
+                    <a class="arrow right" {% if pages.has_previous %} href="?page={{ pages.previous_page_number }}" {% endif %}></a>
+                    {% for page in pages.paginator.page_range %}
+                    <li
+                    {% if page == pages.number %}
+                            style="background-color: red;"
+                        {% endif %}
+                    ><a
+                        {% if page == pages.number %}
+                        {% else %}
+                        href="?page={{ page }}"
+                        {% endif %}
+                    >{{ page }}</a></li>
+                    {% endfor %}
+                    <a class="arrow left" {% if pages.has_next %} href="?page={{ pages.next_page_number }}" {% endif %}></a>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+    <!-- left Side Bar -->
+    <!-- ads -->
+
+    <section class="left-sidebar">
+        <div class="sidebar">
+            {% for ad in ads|slice:":2" %}
+            <div class="right-sidebar-ads">
+                <a href="{{ ad.link }}">
+                    <div class="img-cover" style="background-image: url({{ ad.image.url }});"></div>
+                </a>
+                <div class="sidebar-ads">AD</div>
+            </div>
+            {% endfor %}
+
+            <!-- آموزش -->
+            <div class="amoozesh-main-title">آموزش</div>
+            {% for post in posts|slice:":4" %}
+            <div class="amoozesh">
+                <div class="img-cover amoozesh-img"><img src="{{ post.image.url }}" width="90%" height="90px"></div>
+                <div>
+                    <a class="amoozesh-text" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- وارد بحث شوید -->
+            <div class="talk">
+                <div class="talk-title">وارد بحث شوید</div>
+                {% for post in posts|slice:":5" %}
+                <div class="talk-post">
+                    <div><a class="comment-icon">317</a></div>
+                    <div><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</section>
+
+<!-- خودرو -->
+<!--<section class="one-category">
+    <div class="one-category-title">خودرو</div>
+    <div class="one-category-main">
+        <div class="one-category-rsidebar">
+            <div>
+                <a class="rsidebar-all">
+                    <div class="one-category-rsidebar-heading"><p>توربوشارژر برقی مرسدس AMG C 63 چگونه کار می‌کند</p>
+                    </div>
+                    <div class="one-category-rsidebar-text"><p>در خودروی پلاگین هیبریدی نسل جدید مرسدس AMG C 63 از
+                        توربوشارژر برقی eATL استفاده می‌شود که امکان دست
+                        یابی به ۶۵۳ اسب‌ بخار قدرت
+                        و حذف تأخیر توربوشارژر
+                        را فراهم می‌کند.</p></div>
+                </a>
+            </div>
+            <div>
+                <div class="one-category-footer-line"></div>
+                <div class="one-category-footer">
+                    <div class="one-category-showall">مشاهده همه</div>
+                    <div class="one-category-circle">
+                        <div><a class="arrow left"></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="one-category-left">
+            <div class="one-category-left-up">
+                <div class="one-category-posts">
+                    <div class="one-category-posts-img img-cover" style="background-image:url({% static 'images/car.png' %})"></div>
+                    <div class="one-category-posts-title"><a>مقالات خودرو</a></div>
+                    <div class="one-category-posts-text"><a>جک S3؛ مشخصات فنی، قیمت و هر آنچه درباره آن باید بدانید</a>
+                    </div>
+                </div>
+                <div class="one-category-posts">
+                    <div class="one-category-posts-img img-cover" style="background-image:url({% static 'images/car1.png' %})"></div>
+                    <div class="one-category-posts-title"><a>مقالات خودرو</a></div>
+                    <div class="one-category-posts-text"><a>جک S3؛ مشخصات فنی، قیمت و هر آنچه درباره آن باید بدانید</a>
+                    </div>
+                </div>
+                <div class="one-category-posts">
+                    <div class="one-category-posts-img img-cover" style="background-image:url({% static 'images/car2.png' %})"></div>
+                    <div class="one-category-posts-title"><a>مقالات خودرو</a></div>
+                    <div class="one-category-posts-text"><a>جک S3؛ مشخصات فنی، قیمت و هر آنچه درباره آن باید بدانید</a>
+                    </div>
+                </div>
+            </div>
+            <div class="one-category-left-down">
+                <div class="one-category-posts">
+                    <div class="one-category-posts-img img-cover" style="background-image:url({% static 'images/car3.png' %})"></div>
+                    <div class="one-category-posts-title"><a>مقالات خودرو</a></div>
+                    <div class="one-category-posts-text"><a>جک S3؛ مشخصات فنی، قیمت و هر آنچه درباره آن باید بدانید</a>
+                    </div>
+                </div>
+                <div class="one-category-posts">
+                    <div class="one-category-posts-img img-cover" style="background-image:url({% static 'images/car4.png' %})"></div>
+                    <div class="one-category-posts-title"><a>مقالات خودرو</a></div>
+                    <div class="one-category-posts-text"><a>جک S3؛ مشخصات فنی، قیمت و هر آنچه درباره آن باید بدانید</a>
+                    </div>
+                </div>
+                <div class="one-category-posts">
+                    <div class="one-category-posts-img img-cover" style="background-image:url({% static 'images/car5.png' %})"></div>
+                    <div class="one-category-posts-title"><a>مقالات خودرو</a></div>
+                    <div class="one-category-posts-text"><a>جک S3؛ مشخصات فنی، قیمت و هر آنچه درباره آن باید بدانید</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->
+
+<!-- بررسی -->
+<!--<div class="category-top6-main-title">بررسی</div>
+<section class="category-top6">
+    <div class="category-top6-1 black">
+        <div class="img-cover" style="background-image: url({% static 'images/samsung-galaxy-a72-and-a52.jpg' %});">
+            <a class="category-top6-title">بررسی لپ تاپ هواوی میت بوک D 14</a>
+        </div>
+    </div>
+    <div class="category-top6-left-main">
+        <div class="category-top6-left-up">
+            <div class="category-top6-left-up-posts img-cover black"
+                 style="background-image: url({% static 'images/samsung-galaxy-a72-and-a52.jpg' %});">
+                <div class="category-top6-title"><a>بررسی لپ تاپ هواوی میت بوک D 14</a></div>
+            </div>
+
+            <div class="category-top6-left-up-posts img-cover black"
+                 style="background-image: url({% static 'images/samsung-galaxy-a72-and-a52.jpg' %});">
+                <div class="category-top6-title"><a>بررسی لپ تاپ هواوی میت بوک D 14</a></div>
+            </div>
+
+        </div>
+        <div class="category-top6-left-down">
+            <div class="category-top6-left-down-posts">
+                <div class="category-top6-left-down-posts-img"><img src="{% static 'images/8.png' %}" height="120px" width="100%">
+                </div>
+                <div class="category-top6-left-down-posts-title"><a>بررسی می ۱۱ لایت شیائومی</a></div>
+            </div>
+            <div class="category-top6-left-down-posts">
+                <div class="category-top6-left-down-posts-img"><img src="{% static 'images/8.png' %}" height="120px" width="100%">
+                </div>
+                <div class="category-top6-left-down-posts-title"><a>بررسی می ۱۱ لایت شیائومی</a></div>
+            </div>
+            <div class="category-top6-left-down-posts">
+                <div class="category-top6-left-down-posts-img"><img src="{% static 'images/8.png' %}" height="120px" width="100%">
+                </div>
+                <div class="category-top6-left-down-posts-title"><a>بررسی می ۱۱ لایت شیائومی</a></div>
+            </div>
+
+        </div>
+    </div>
+
+</section>-->
+{% endblock %}

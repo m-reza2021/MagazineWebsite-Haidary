@@ -1,0 +1,84 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/single-page.css' %}">
+{% endblock %}
+{% block content %}
+<section class="single-page-container">
+    <div class="single-page-right">
+        <div class="saved-list-container">
+            <div>
+                <h3>لیست مطالب ذخیره شده</h3>
+            </div>
+            <br>
+            <table class="saved-list-table">
+                <thead>
+                <tr>
+                    <td>عنوان</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                {% if saved.count == 0 %}
+                    <tr>
+                        <td>لیست خالی می باشد.</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% else %}
+                {% for saved in saved %}
+                <tr>
+                    <td>{{ saved.post }}</td>
+                    <td><a class="read-button" href="{{ saved.post.get_absolute_url }}">مطالعه کنید</a></td>
+                    <td>
+                        <form method="post" action="/delete-saved" class="delete-saved">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{ saved.id }}" name="save_id" />
+                            <button><i class="fa fa-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- <div class="single-page-left">
+        <div class="latest-post-main-title">آخرین مطالب سایت</div>
+        <div class="latest-post">
+            <div class="img-cover latest-post-img" style="background-image: url(images/9.png);"></div>
+            <div class="latest-post-text"><a> بهترین گوشی های موبایل بازار ایران (خرداد ۱۴۰۰)</a></div>
+        </div>
+        <div class="latest-post">
+            <div class="img-cover latest-post-img" style="background-image: url(images/9.png);"></div>
+            <div class="latest-post-text"><a>بهترین گوشی های موبایل بازار ایران (خرداد ۱۴۰۰)</a></div>
+        </div>
+        <div class="latest-post">
+            <div class="img-cover latest-post-img" style="background-image: url(images/9.png);"></div>
+            <div class="latest-post-text"><a>بهترین گوشی های موبایل بازار ایران (خرداد ۱۴۰۰)</a></div>
+        </div>
+        <div class="latest-post">
+            <div class="img-cover latest-post-img" style="background-image: url(images/9.png);"></div>
+            <div class="latest-post-text"><a>بهترین گوشی های موبایل بازار ایران (خرداد ۱۴۰۰)</a></div>
+        </div>
+        <div class="latest-post">
+            <div class="img-cover latest-post-img" style="background-image: url(images/9.png);"></div>
+            <div class="latest-post-text"><a>بهترین گوشی های موبایل بازار ایران (خرداد ۱۴۰۰)</a></div>
+        </div>
+
+
+    </div> -->
+
+</section>
+{% if messages %}
+    {% for message in messages %}
+        <script>alert('{{ message }}')</script>
+    {% endfor %}
+{% endif %}
+{% endblock %}

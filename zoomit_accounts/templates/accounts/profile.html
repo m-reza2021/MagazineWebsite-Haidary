@@ -1,0 +1,78 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="dashboard">
+        <div class="user-dashboard">
+            <div class="user-image">
+                <div class="user-image-container">
+                    <img src="{{ image.image.url }}" class="profile-image">
+                    <img src="" class="image-preview">
+                </div>
+                <div class="form-container">
+                    <form method="post" enctype="multipart/form-data" class="profile-form" action="/image-upload">
+                        {% csrf_token %}
+                        <label for="{{ image_form.image.id_for_label }}" class="profile-image-upload-label">{{ image_form.image.label }}</label>
+                        {{ image_form.image }}
+                        <input type="submit" value="آپلود" class="profile-submit-button" disabled="false">
+                    </form>
+                </div>
+            </div>
+            <div class="user-information">
+                <form class="update-profile-form" method="post" action="/profile_update">
+                    {% csrf_token %}
+                    <div class="form-control">
+                        <label for="{{ profile_form.first_name.id_for_label }}">{{ profile_form.first_name.label }} : </label>
+                        {{ profile_form.first_name }}
+                    </div>
+                    <div class="form-control">
+                        <label for="{{ profile_form.last_name.id_for_label }}">{{ profile_form.last_name.label }} : </label>
+                        {{ profile_form.last_name }}
+                    </div>
+                    <div class="form-control">
+                        <label for="{{ profile_form.username.id_for_label }}">{{ profile_form.username.label }} : </label>
+                        {{ profile_form.username }}
+                    </div>
+                    <div class="form-control" >
+                        <label for="{{ profile_form.email.id_for_label }}">{{ profile_form.email.label }} : </label>
+                        {{ profile_form.email }}
+                    </div>
+                    <div class="form-control">
+                        <div></div>
+                        <div>
+                            <ul>
+                                {% if messages.tags == error %}
+                                    {% for error in messages %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="submit-button-container">
+                        <button type="submit" id="submit-button" disabled>ذخیره تنظیمات</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<script>
+    const inputs = document.querySelectorAll('.input')
+    const first_name = inputs[0].value
+    const last_name = inputs[1].value
+    const username = inputs[2].value
+    const email = inputs[3].value
+
+    const button = document.querySelector('#submit-button')
+    inputs.forEach(function(input){
+        input.addEventListener('change', function(){
+            if(inputs[0].value !== first_name  || inputs[1].value !== last_name || inputs[2].value.toLowerCase() !== username || inputs[3].value.toLowerCase() !== email){
+                button.removeAttribute('disabled');
+            }
+            else{
+                button.setAttribute('disabled', '');
+            }
+        })
+        });
+</script>
+{% endblock %}

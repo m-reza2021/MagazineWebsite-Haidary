@@ -1,0 +1,205 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+{% load jalali_tags %}
+
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/single-page.css' %}">
+{% endblock %}
+{% block content %}
+<section class="single-page-container">
+        <div class="single-page-right">
+            <div class="single-page-img"><img src="{{ post.image.url }}"></div>
+            <div class="single-page-tags">
+                {% for tag in post.tags.all %}
+                <a class="tags" href="{{ tag.get_tag_url }}">{{tag}}</a>
+                {% endfor %}
+            </div>
+            <div class="single-page-title"><h1>{{ post.title }}</h1></div>
+            <div class="single-page-bio">
+                <div class="bio-right">
+                    <div class="bio-main">
+                        <a class="writer-avatar"><img src="{{ author.image.url }}"></a>
+                        <div class="writer-bio">
+                            <div class="writer-name">نویسنده: <a>{{ post.author.get_full_name }}</a></div>
+                            <div class="write-date">تاریخ انتشار: {{ post.issue_date|to_jalali:"%Y/%m/%d" }}</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="bio-left">
+                    <a class="telegram">تلگرام</a>
+                    <a class="facebook">فیسبوک</a>
+                    {% if saved %}
+                    <span class="saved-thick">ذخیره شده <i class="fas fa-check-circle"></i></span>
+                    {% else %}
+                    <form method="post" class="savelist-form" action="/save-post">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ post.id }}" name="post_id" />
+                        <input type="submit" class="save-post" value="ذخیره"/>
+                    </form>
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="single-page-text">
+                <p>
+                    {{ post.description|safe }}
+                </p>
+            </div>
+
+            <div class="read-more-main">
+                <div class="read-more-header">
+                    <span class="read-more-title">بیشتر بخوانید:</span>
+                </div>
+                {% for post in latest_posts|slice:":4" %}
+                <div class="read-more-items">
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <div class="single-post-source">
+                <div class="source">منبع</div>
+                <a class="source-name">ترابایت</a>
+            </div>
+
+            <div class="related-post">
+                <!-- <div class="related-top"> -->
+                {% for post in related_posts %}
+                    <a href="{{ post.get_absolute_url }}">
+                        <img src="{{ post.image.url }}" width="100%" height="85%">
+                        <h6>{{ post.title }}</h6>
+                    </a>
+                {% endfor %}
+                <!-- </div> -->
+            </div>
+
+            <div class="comments" style="width: 60%; margin: 0 auto; padding: 20px;">
+                <div>
+                    <p>
+                        نظرات کاربران
+                    </p>
+                </div>
+                <div>
+                    {% if comments|length > 0 %}
+                    {% for comment in comments %}
+                    <div style="background: #ededed; padding: 10px; margin: 10px 0;">
+                        <div style="margin-bottom: 10px;">
+                            <div style="display: grid; grid-template-columns: .5fr 4fr; align-items: center; gap: 20px; width: 60%; font-size: .9rem;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="{{ comment.user_image }}" style="width: 100%; border-radius: 50%;">
+                                </div>
+                                <div>
+                                    <h4>{{ comment.user.get_full_name }}</h4>
+                                    <p style="font-size: .8rem;">{{ comment.issue_date|to_jalali:"%Y/%m/%d" }}</p>
+                                </div>
+                            </div>
+                            <div style="padding-right: 50px; margin: 10px 0; text-align: justify;">
+                                <p>{{ comment.body }}</p>
+                            </div>
+                        </div>
+                        <div>
+                            {% for reply in comment.usercommentreply_set.all %}
+                            <div style="margin: 10px 40px 10px 0; padding: 10px; border-right: 2px solid black">
+                                <div style="display: grid; grid-template-columns: .5fr 4fr; align-items: center; gap: 20px; width: 60%; font-size: .9rem;">
+                                    <div style="display: flex; align-items: center; ">
+                                        <img src="{{ reply.user_image }}" style="width: 100%; height:100%; border-radius: 50%;">
+                                    </div>
+                                    <div>
+                                        <h4>{{ reply.user.get_full_name }}</h4>
+                                        <p style="font-size: .8rem;">{{ reply.issue_date|to_jalali:"%Y/%m/%d" }}</p>
+                                    </div>
+                                </div>
+                                <div style="padding-right: 50px; margin: 10px 0; text-align: justify;">
+                                    <p>{{ reply.body }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <div style="margin: 10px 40px 10px 0; padding: 10px;">
+                                <form class="comment-reply-form" method="post" action="/comment-reply">
+                                    {% csrf_token %}
+                                    <div style="display:grid; grid-template-columns: 5fr 1fr; align-items: center; gap: 10px;">
+                                        <div style="display: flex; align-items: center;">
+                                            <input type="hidden" name="post_id" value="{{ post.id }}">
+                                            <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                                            {{ comment_reply_form.body }}
+                                        </div>
+                                        <div>
+                                            {% if request.user.is_authenticated %}
+                                            <button style="width: 100%; padding: 10px;">ثبت نظر</button>
+                                            {% else %}
+                                            <a type="submit" href="/login" style="display: inline-block; background: #ededed; padding: 0 5px; font-size: .8rem; border: 1px solid;">برای ثبت نظر وارد سایت شوید</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <div style="background: #ededed; padding: 0 10px;">
+                        <p>نظری ثبت نشده است.</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="single-page-form">
+                <div>
+                    <h3>نظر شما</h3>
+                </div>
+                <form class="footer-form" method="post" action="/post-comment">
+                    {% csrf_token %}
+                    <div class="msg-name">
+                        <label for=""></label>
+                        {{ post_comment_form.post }}
+                    </div>
+                    <div class="msg-text">
+                        <label for=""></label>
+                        {{ post_comment_form.body }}
+                    </div>
+                    {% if request.user.is_authenticated %}
+                    <div class="msg-submit">
+                        <button type="submit">ارسال پیام</button>
+                    </div>
+                    {% else %}
+                    <div class="msg-submit">
+                        <a type="submit" href="/login" style="display: inline-block; background: #ededed; padding: 0 10px;">برای ثبت نظر وارد سایت شوید</a>
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+
+        <!-- <div class="single-page-left">
+            <div class="latest-post-main-title">آخرین مطالب سایت</div>
+            <div class="latest-post">
+                <div class="img-cover latest-post-img" style="background-image: url(images/9.png);"></div>
+                <div class="latest-post-text"><a> بهترین گوشی های موبایل بازار ایران (خرداد ۱۴۰۰)</a></div>
+            </div>
+            <div class="latest-post">
+                <div class="img-cover latest-post-img" style="background-image: url(images/9.png);"></div>
+                <div class="latest-post-text"><a>بهترین گوشی های موبایل بازار ایران (خرداد ۱۴۰۰)</a></div>
+            </div>
+            <div class="latest-post">
+                <div class="img-cover latest-post-img" style="background-image: url(images/9.png);"></div>
+                <div class="latest-post-text"><a>بهترین گوشی های موبایل بازار ایران (خرداد ۱۴۰۰)</a></div>
+            </div>
+            <div class="latest-post">
+                <div class="img-cover latest-post-img" style="background-image: url(images/9.png);"></div>
+                <div class="latest-post-text"><a>بهترین گوشی های موبایل بازار ایران (خرداد ۱۴۰۰)</a></div>
+            </div>
+            <div class="latest-post">
+                <div class="img-cover latest-post-img" style="background-image: url(images/9.png);"></div>
+                <div class="latest-post-text"><a>بهترین گوشی های موبایل بازار ایران (خرداد ۱۴۰۰)</a></div>
+            </div>
+
+
+        </div> -->
+
+    </section>
+{% endblock %}
