@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-^sb4q3qgopfahma=wm0yy%pn04m+v+edsl$+)_%fsqpo!m&tl2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['zoomitapp.herokuapp.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
