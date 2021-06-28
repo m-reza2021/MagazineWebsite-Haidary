@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^sb4q3qgopfahma=wm0yy%pn04m+v+edsl$+)_%fsqpo!m&tl2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['zoomitapp.herokuapp.com']
 
@@ -157,13 +157,13 @@ USE_TZ = True
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'assets'
-]
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'assets'
+# ]
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = BASE_DIR / ''
+MEDIA_ROOT = BASE_DIR / 'static_cdn/media_root'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
