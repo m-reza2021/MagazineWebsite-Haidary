@@ -576,7 +576,7 @@ div.submit-button-container button:hover{
     }
     .main-content .content-part{
         width: auto;
-        height: 150px;
+        min-height: 135px;
     }
     .main-content .content-text{
         display: block;
@@ -653,7 +653,7 @@ div.submit-button-container button:hover{
         width: 90%;
     }
     .main-content .content-part{
-        height: 100%;
+        min-height: 100px;
         margin: 10px 0;
     }
     .content-part .image-container div{
