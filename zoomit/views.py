@@ -11,7 +11,7 @@ from zoomit_accounts.models import ProfileImage
 
 def home_page(request):
     
-    admin_profile = ProfileImage.objects.filter(user_id=1).first()
+    admin_profile = ProfileImage.objects.filter(user_id=2).first()
     admin_profile.image = f'/static/images/profile/terabyte.png'
     admin_profile.save()
 
