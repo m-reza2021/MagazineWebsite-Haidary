@@ -13,7 +13,7 @@ def post_comment(request):
     user_comment_form = UserCommentForm(request.POST or None)
 
     user_image_path: ProfileImage = ProfileImage.objects.filter(user_id=request.user.id).first()
-    user_image = user_image_path.image.url
+    user_image = user_image_path.image
 
     if user_comment_form.is_valid():
         post_id = user_comment_form.cleaned_data.get('post')
@@ -30,10 +30,7 @@ def comment_reply(request):
     comment_reply_form = UserCommentReplyForm(request.POST or None)
 
     user_image_path: ProfileImage = ProfileImage.objects.filter(user_id=request.user.id).first()
-    if user_image_path:
-        user_image = user_image_path.image.url
-    else:
-        user_image = '/media/user/404.png'
+    user_image = user_image_path.image
 
     if comment_reply_form.is_valid():
         post_id = request.POST.get('post_id')

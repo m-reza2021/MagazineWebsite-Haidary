@@ -19,7 +19,7 @@
             <div class="single-page-bio">
                 <div class="bio-right">
                     <div class="bio-main">
-                        <a class="writer-avatar"><img src="{{ author.image.url }}"></a>
+                        <a class="writer-avatar"><img src="{{ author.image }}"></a>
                         <div class="writer-bio">
                             <div class="writer-name">نویسنده: <a>{{ post.author.get_full_name }}</a></div>
                             <div class="write-date">تاریخ انتشار: {{ post.issue_date|to_jalali:"%Y/%m/%d" }}</div>

@@ -87,11 +87,11 @@ def profile(request):
 
     if profile is not None:
         for x in comments:
-            x.user_image = profile.image.url
+            x.user_image = profile.image
             x.save()
 
         for x in replies:
-            x.user_image = profile.image.url
+            x.user_image = profile.image
             x.save()
 
     context = {
