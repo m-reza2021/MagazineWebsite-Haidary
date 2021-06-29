@@ -692,5 +692,8 @@ div.submit-button-container button:hover{
     .single-page-container .related-post{
         grid-template-columns: 1fr 1fr;
     }
+    .single-page-container .related-post a{
+        grid-template-rows: 2fr 1fr;
+    }
 
 }
