@@ -534,6 +534,9 @@ div.submit-button-container button:hover{
     .update-profile-form div.form-control{
         width: 100%;
     }
+    .saved-list-container{
+        width: 80%;
+    }
 }
 
 @media screen and (max-width: 767px){
@@ -579,6 +582,9 @@ div.submit-button-container button:hover{
     .update-profile-form div.form-control{
         grid-template-columns: 1.5fr 4fr;
     }
+    .saved-list-container{
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -618,5 +624,8 @@ div.submit-button-container button:hover{
     }
     .user-dashboard{
         grid-template-columns: 1fr;
+    }
+    .saved-list-container{
+        width: 90%;
     }
 }
