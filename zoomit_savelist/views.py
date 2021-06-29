@@ -21,6 +21,7 @@ def save_post(request):
 def saved_list(request):
     saved_posts: SaveList = SaveList.objects.filter(owner_id=request.user.id)
     context = {
+        'page_title': 'مطالب ذخیره شده',
         'saved': saved_posts
     }
     return render(request, 'saved/saved_list.html', context)
