@@ -54,10 +54,10 @@ def signup_page(request):
         new_user = User.objects.create_user(first_name=first_name, last_name=last_name,
                                             email=email, username=username, password=password)
         if new_user:
-            image = RandomImage.objects.all()
-            index = random.randint(1, len(image))
+            index = random.randint(1, 7)
+            image = f'/static/images/profile/{index}.png'
 
-            ProfileImage.objects.create(user_id=new_user.id, image=image[index-1].image)
+            ProfileImage.objects.create(user_id=new_user.id, image=image)
             messages.success(request, 'ثبت نام شما با موفقیت انجام شد.')
             return redirect('/login')
 
