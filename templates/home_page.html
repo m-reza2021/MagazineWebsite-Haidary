@@ -9,14 +9,14 @@
         <div class="main-1-right-1">
             <div class="main-1-right-part1 black">
                 {% for post in posts|slice:":1" %}
-                <a class="img-cover" style="background-image: url({{ post.image.url }})"></a>
+                <a class="img-cover" style="background-image: url({{ post.image }})"></a>
                 <a href="{{ post.get_absolute_url }}" class="main-title">{{ post.title }}</a>
                 {% endfor %}
             </div>
             <div class="main-1-right-part">
                 {% for post in posts|slice:"1:3" %}
                 <div class="main-1-right-part-bottom black">
-                    <a class="img-cover" style="background-image: url({{ post.image.url }})"></a>
+                    <a class="img-cover" style="background-image: url({{ post.image }})"></a>
                     <a class="main-title-small" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
                 </div>
                 {% endfor %}
@@ -25,13 +25,13 @@
         <div class="main-1-right-2">
             {% for post in posts|slice:"3:5" %}
             <div class="main-1-right-2-part black">
-                <a class="img-cover" style="background-image: url({{ post.image.url }})"></a>
+                <a class="img-cover" style="background-image: url({{ post.image }})"></a>
                 <a class="main-title-small" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
             </div>
             {% endfor %}
             {% for post in posts|slice:"7:7" %}
             <div class="main-1-right-2-part black">
-                <a class="img-cover" style="background-image: url({{ post.image.url }})"></a>
+                <a class="img-cover" style="background-image: url({{ post.image }})"></a>
                 <a class="main-title-small" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
             </div>
             {% endfor %}
@@ -42,7 +42,7 @@
         {% for ad in ads|slice:":2" %}
         <div class="ads-part">
             <a class="img-cover main-ads" href="{{ ad.link }}"
-               style="background-image: url({{ ad.image.url }})"></a>
+               style="background-image: url({{ ad.image }})"></a>
             <div class="ads-label">AD</div>
         </div>
         {% endfor %}
@@ -55,8 +55,10 @@
     <div class="request-title">پیشنهاد سردبیر</div>
     <section class="request padding-main">
         {% for post in posts|slice:":5" %}
-        <div class="request-part1">
-            <div class="img-cover request-img" style="background-image: url({{ post.image.url }});"></div>
+        <div class="request-part">
+            <div class="image-container">
+                <div class="img-cover request-img" style="background-image: url({{ post.image.url }});"></div>
+            </div>
             <div class="request-text">
                 <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
             </div>
@@ -70,21 +72,23 @@
 
     <!-- right Side Bar -->
     <section class="right-sidebar">
-        <!-- ads -->
-        {% for ad in ads|slice:":1" %}
-        <div class="right-sidebar-ads">
-            <a href="{{ ad.link }}"><div class="img-cover" style="background-image: url({{ ad.image.url }});"></div></a>
-            <div class="sidebar-ads">AD</div>
+        <div class="sidebar">
+            <!-- ads -->
+            {% for ad in ads|slice:":1" %}
+            <div class="right-sidebar-ads">
+                <a href="{{ ad.link }}"><div class="img-cover" style="background-image: url({{ ad.image.url }});"></div></a>
+                <div class="sidebar-ads">AD</div>
+            </div>
+            {% endfor %}
+            <!-- latest posts -->
+            <div class="most-visited-main-title">پربازدید ترین مطالب</div>
+            {% for post in posts|slice:":5" %}
+            <div class="most-visited-posts">
+                <div class="img-cover most-visited-img" style="background-image: url({{ post.image.url }});"></div>
+                <div class="most-visited-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-        <!-- latest posts -->
-        <div class="most-visited-main-title">پربازدید ترین مطالب</div>
-        {% for post in posts|slice:":5" %}
-        <div class="most-visited-posts">
-            <div class="img-cover most-visited-img" style="background-image: url({{ post.image.url }});"></div>
-            <div class="most-visited-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
-        </div>
-        {% endfor %}
     </section>
     <!-- content -->
     <section class="content">
@@ -93,7 +97,9 @@
         <div class="main-content">
             {% for post in main_posts %}
             <div class="content-part">
-                <div class="img-cover img-content" style="background-image: url({{ post.image.url }});"></div>
+                <div class="image-container">
+                    <div class="img-cover img-content" style="background-image: url({{ post.image.url }});"></div>
+                </div>
                 <div class="context-content">
                     <div><p class="category">{{ post.category }}</p></div>
                     <div><a class="content-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a>

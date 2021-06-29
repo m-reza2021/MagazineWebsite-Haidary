@@ -7,13 +7,12 @@
             <div class="footer-title">آنچه دیگران بیشتر خواندند</div>
             {% for post in posts|slice:":2" %}
             <div class="footer-clomn1-content">
-                <div style="width: 90px; height: 90px;">
+                <div class="image-container">
                     <div class="img-cover" style="background-image: url({{ post.image.url }});"></div>
                 </div>
                 <div class="footer-colomn1-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
             </div>
             <div class="footer-column1-date">{{ post.issue_date|to_jalali:'%Y/%m/%d' }}</div>
-            <div class="footer-column1-date"></div>
             {% endfor %}
         </div>
 
@@ -22,7 +21,7 @@
             <div class="footer-title">کمی از تکنالوژی فاصله بگیرید</div>
             {% for post in posts|slice:"2:4" %}
             <div class="footer-clomn1-content">
-                <div style="width: 90px; height: 90px;">
+                <div class="image-container">
                     <div class="img-cover" style="background-image: url({{ post.image.url }});"></div>
                 </div>
                 <div class="footer-colomn1-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>

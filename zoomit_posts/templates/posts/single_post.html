@@ -9,7 +9,7 @@
 {% block content %}
 <section class="single-page-container">
         <div class="single-page-right">
-            <div class="single-page-img"><img src="{{ post.image.url }}"></div>
+            <div class="single-page-img"><img src="{{ post.image }}"></div>
             <div class="single-page-tags">
                 {% for tag in post.tags.all %}
                 <a class="tags" href="{{ tag.get_tag_url }}">{{tag}}</a>

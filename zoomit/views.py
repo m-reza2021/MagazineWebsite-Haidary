@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
@@ -9,10 +10,14 @@ from zoomit_posts.models import Post
 
 def home_page(request):
     posts = Post.objects.all().order_by('-id')
+    for post in posts:
+        index = random.randint(1,9)
+        post.image = f'/static/images/posts/{index}.png'
+        post.save()
 
     main_posts = Post.objects.all().order_by('-id')
 
-    paginator = Paginator(main_posts, 6)
+    paginator = Paginator(main_posts, 10)
     page = request.GET.get('page')
 
     try:
@@ -23,6 +28,10 @@ def home_page(request):
         main_posts = paginator.page(paginator.num_pages)
 
     ads = Advertise.objects.all().order_by('-id')
+    for ad in ads:
+        index = random.randint(1,9)
+        ad.image = f'static/images/posts/{index}.png'
+        ad.save()
 
     context = {
         'page_title': 'خانه',
