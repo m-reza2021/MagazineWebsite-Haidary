@@ -8,7 +8,7 @@
             {% for post in posts|slice:":2" %}
             <div class="footer-clomn1-content">
                 <div class="image-container">
-                    <div class="img-cover" style="background-image: url({{ post.image.url }});"></div>
+                    <div class="img-cover" style="background-image: url({{ post.image }});"></div>
                 </div>
                 <div class="footer-colomn1-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
             </div>
@@ -22,7 +22,7 @@
             {% for post in posts|slice:"2:4" %}
             <div class="footer-clomn1-content">
                 <div class="image-container">
-                    <div class="img-cover" style="background-image: url({{ post.image.url }});"></div>
+                    <div class="img-cover" style="background-image: url({{ post.image }});"></div>
                 </div>
                 <div class="footer-colomn1-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
             </div>

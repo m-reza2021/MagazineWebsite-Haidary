@@ -1,7 +1,7 @@
 <div class="most-visited-main-title">پربازدید ترین مطالب</div>
 {% for post in posts|slice:":6" %}
 <div class="most-visited-posts">
-    <div class="img-cover most-visited-img" style="background-image: url({{ post.image.url }});"></div>
+    <div class="img-cover most-visited-img" style="background-image: url({{ post.image }});"></div>
     <div class="most-visited-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
 </div>
 {% endfor %}

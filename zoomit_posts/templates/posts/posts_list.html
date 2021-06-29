@@ -22,7 +22,7 @@
                 {% for post in page_obj %}
                 <div class="archive-part">
                     <div class="archive-image-container">
-                        <div class="img-cover img-archive" style="background-image: url({{ post.image.url }});"></div>
+                        <div class="img-cover img-archive" style="background-image: url({{ post.image }});"></div>
                     </div>
                     <div class="archive-context">
                         <div><p class="archive-category">{{ post.category }}</p></div>
