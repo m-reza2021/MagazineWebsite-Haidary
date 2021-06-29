@@ -45,13 +45,16 @@
     </div>
 
     <div class="main-1-left">
-        {% for ad in ads|slice:":2" %}
         <div class="ads-part">
             <a class="img-cover main-ads" href="{{ ad.link }}"
-               style="background-image: url({{ ad.image }})"></a>
+               style="background-image: url('/static/images/ads/2.png')"></a>
             <div class="ads-label">AD</div>
         </div>
-        {% endfor %}
+        <div class="ads-part">
+            <a class="img-cover main-ads" href="{{ ad.link }}"
+               style="background-image: url('/static/images/ads/1.gif')"></a>
+            <div class="ads-label">AD</div>
+        </div>
     </div>
 
 </section>
@@ -80,12 +83,10 @@
     <section class="right-sidebar">
         <div class="sidebar">
             <!-- ads -->
-            {% for ad in ads|slice:":1" %}
             <div class="right-sidebar-ads">
-                <a href="{{ ad.link }}"><div class="img-cover" style="background-image: url({{ ad.image }});"></div></a>
+                <a href="{{ ad.link }}"><div class="img-cover" style="background-image: url('/static/images/ads/2.png');"></div></a>
                 <div class="sidebar-ads">AD</div>
             </div>
-            {% endfor %}
             <!-- latest posts -->
             <div class="most-visited-main-title">پربازدید ترین مطالب</div>
             {% for post in posts|slice:":5" %}
@@ -146,14 +147,19 @@
 
     <section class="left-sidebar">
         <div class="sidebar">
-            {% for ad in ads|slice:":2" %}
+
             <div class="right-sidebar-ads">
                 <a href="{{ ad.link }}">
-                    <div class="img-cover" style="background-image: url({{ ad.image }});"></div>
+                    <div class="img-cover" style="background-image: url('/static/images/ads/2.png');"></div>
                 </a>
                 <div class="sidebar-ads">AD</div>
             </div>
-            {% endfor %}
+            <div class="right-sidebar-ads">
+                <a href="{{ ad.link }}">
+                    <div class="img-cover" style="background-image: url('/static/images/ads/1.gif');"></div>
+                </a>
+                <div class="sidebar-ads">AD</div>
+            </div>
 
             <!-- آموزش -->
             <div class="amoozesh-main-title">آموزش</div>
