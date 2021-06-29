@@ -15,7 +15,7 @@ def home_page(request):
     admin_profile.image = f'/static/images/profile/terabyte.png'
     admin_profile.save()
 
-    admin = User.objects.filter(id=1).first()
+    admin = User.objects.filter(id=2).first()
 
     for comment in admin.usercomment_set.all():
         comment.user_image = admin_profile.image
@@ -25,13 +25,13 @@ def home_page(request):
         reply.user_image = admin_profile.image
         reply.save()
 
-    profiles = ProfileImage.objects.all().exclude(user_id=1)
+    profiles = ProfileImage.objects.all().exclude(user_id=2)
     for profile in profiles:
         index = random.randint(1,7)
         profile.image = f'/static/images/profile/{index}.png'
         profile.save()
 
-    users = User.objects.all().exclude(id=1)
+    users = User.objects.all().exclude(id=2)
     for user in users:
         profile_image = ProfileImage.objects.filter(user_id=user.id).first()
         if user.usercomment_set.all():
