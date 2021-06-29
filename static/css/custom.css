@@ -593,12 +593,16 @@ div.submit-button-container button:hover{
     }
     .request{
         grid-template-columns: 1fr;
+        gap: 10px;
     }
     .request-part:nth-last-child(n+2){
         display: grid;
     }
     .request-part .image-container{
         min-height: 200px;
+    }
+    .main{
+        margin-top: 20px;
     }
     .footer-columns{
         grid-template-columns: 1fr;
