@@ -663,6 +663,9 @@ div.submit-button-container button:hover{
     .search-form:hover{
         width: 100%;
     }
+    .dashboard{
+        padding: 20px 10px;
+    }
     .user-dashboard{
         grid-template-columns: 1fr;
     }
