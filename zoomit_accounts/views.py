@@ -110,7 +110,8 @@ def image_upload(request):
     profile: ProfileImage = ProfileImage.objects.filter(user_id=request.user.id).last()
 
     if image_form.is_valid():
-        image = image_form.files.get('image')
+        index = random.randint(1, 7)
+        image = f'/static/images/profile/{index}.png'
         if profile:
             profile.image = image
             profile.save()

@@ -233,7 +233,7 @@ a{
     padding: 0 10px;
 }
 
-.logged-user a:hover{
+a.user:hover .logged-user{
     color: white !important;
 }
 
@@ -465,7 +465,31 @@ div.submit-button-container button:hover{
 .footer-clomn1-content{
     grid-template-columns: 3fr 5fr;
 }
+.comments{
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.comments .user-info{
+    display: grid;
+    grid-template-columns: .5fr 4fr;
+    align-items: center; gap: 20px;
+    width: 60%;
+    font-size: .9rem;
+}
+.related-post a{
+    display: grid;
+    grid-direction: rows;
+    grid-template-rows: 4fr 1fr;
+    gap: 10px;
+    height: 100%;
+}
 
+.related-post a img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
 
 @media screen and (max-width:991px){
 
@@ -494,6 +518,12 @@ div.submit-button-container button:hover{
     }
     .footer-clomn1-content .image-container{
         height: 100px;
+    }
+    .comments{
+        width: 90%;
+    }
+    .search-form{
+        width: 300px;
     }
 }
 
@@ -528,6 +558,12 @@ div.submit-button-container button:hover{
     .footer-columns{
         grid-template-columns: repeat(2, 1fr);
     }
+    .search-form{
+        width: 250px;
+    }
+    .search-form:hover{
+        width: 250px;
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -551,5 +587,14 @@ div.submit-button-container button:hover{
     }
     .footer-columns{
         grid-template-columns: 1fr;
+    }
+    .comments .user-info{
+        grid-template-columns: 1fr 4fr;
+    }
+    .search-form{
+        width: 150px;
+    }
+    .search-form:hover{
+        width: 150px;
     }
 }

@@ -18,7 +18,7 @@
                     {% if request.user.is_authenticated %}
                     <a href="/saved-list">مطالب ذخیره شده</a>
                     <a href="/logout">خروج</a>
-                    <span class="logged-user"><a href="/profile">{{ request.user.get_full_name }}</a></span>
+                    <a class="user" href="/profile"><span class="logged-user">{{ request.user.get_full_name }}</span></a>
                     {% else %}
                     <a href="/login">ورود و ثبت نام</a>
                     {% endif %}
