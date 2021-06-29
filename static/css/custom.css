@@ -645,7 +645,9 @@ div.submit-button-container button:hover{
         grid-template-columns: 1fr;
     }
     .comments .user-info{
+        display: grid;
         grid-template-columns: 1fr 4fr;
+        gap: 5px;
     }
     #up{
         height: 100%;
