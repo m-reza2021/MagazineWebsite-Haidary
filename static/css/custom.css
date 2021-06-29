@@ -490,6 +490,20 @@ div.submit-button-container button:hover{
     width: 100%;
     height: 100%;
 }
+.search{
+    margin: 0;
+}
+
+.search .search-form{
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    transform: none;
+}
+
+
+
 
 @media screen and (max-width:991px){
 
@@ -616,11 +630,21 @@ div.submit-button-container button:hover{
     .comments .user-info{
         grid-template-columns: 1fr 4fr;
     }
+    #up{
+        height: 100%;
+        flex-direction: column;
+    }
+    .search{
+        position: relative;
+        left: 0;
+        width: 60%;
+
+    }
     .search-form{
-        width: 150px;
+        width: 100%;
     }
     .search-form:hover{
-        width: 150px;
+        width: 100%;
     }
     .user-dashboard{
         grid-template-columns: 1fr;
@@ -628,4 +652,15 @@ div.submit-button-container button:hover{
     .saved-list-container{
         width: 90%;
     }
+    .main-content .content-part{
+        height: 100%;
+        margin: 10px 0;
+    }
+    .content-part .image-container div{
+        min-height: 100%;
+    }
+    .main-content .content-text{
+        display: none;
+    }
+
 }
