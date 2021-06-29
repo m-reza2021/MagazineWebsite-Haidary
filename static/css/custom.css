@@ -525,6 +525,15 @@ div.submit-button-container button:hover{
     .search-form{
         width: 300px;
     }
+    .user-dashboard{
+        gap: 20px;
+    }
+    .user-image-container{
+        width: 100%;
+    }
+    .update-profile-form div.form-control{
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 767px){
@@ -564,6 +573,12 @@ div.submit-button-container button:hover{
     .search-form:hover{
         width: 250px;
     }
+    .dashboard{
+        padding: 50px 50px;
+    }
+    .update-profile-form div.form-control{
+        grid-template-columns: 1.5fr 4fr;
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -596,5 +611,8 @@ div.submit-button-container button:hover{
     }
     .search-form:hover{
         width: 150px;
+    }
+    .user-dashboard{
+        grid-template-columns: 1fr;
     }
 }
