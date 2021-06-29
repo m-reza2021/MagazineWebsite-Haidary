@@ -690,7 +690,7 @@ div.submit-button-container button:hover{
         display: none;
     }
     .single-page-container .related-post{
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
 }
