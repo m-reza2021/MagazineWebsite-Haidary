@@ -4,6 +4,10 @@
     src: url("../fonts/Shabnam-FD.ttf");
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 *, body{
     font-family: 'Shabnam', sans-serif !important;
 }
