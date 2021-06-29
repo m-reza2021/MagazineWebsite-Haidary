@@ -95,7 +95,7 @@ def profile(request):
             x.save()
 
     context = {
-        'page_title': profile.user,
+        'page_title': profile.user.get_full_name(),
         'image': profile,
         'image_form': image_form,
         'profile_form': profile_update_form,
