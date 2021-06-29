@@ -506,8 +506,15 @@ div.submit-button-container button:hover{
     transform: none;
 }
 
+.archive-part{
+    padding: 0;
+    margin: 10px 0;
+    min-height: 220px;
+}
 
-
+.archive-part .archive-text{
+    display: block;
+}
 
 @media screen and (max-width:991px){
 
@@ -554,6 +561,9 @@ div.submit-button-container button:hover{
     }
     .saved-list-container{
         width: 80%;
+    }
+    .archive-part .archive-text{
+        font-size: .9rem;
     }
 }
 
@@ -602,6 +612,9 @@ div.submit-button-container button:hover{
     }
     .saved-list-container{
         width: 90%;
+    }
+    .footer-columns{
+        padding: 10px;
     }
 }
 
@@ -665,6 +678,16 @@ div.submit-button-container button:hover{
     }
     .main-content .content-text{
         display: none;
+    }
+    .archive-part{
+        grid-template-columns: 3fr 4fr;
+        min-height: 100%;
+    }
+    .archive-part .archive-text{
+        display: none;
+    }
+    .single-page-container .related-post{
+        grid-template-columns: 1fr;
     }
 
 }
