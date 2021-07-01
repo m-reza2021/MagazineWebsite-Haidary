@@ -95,35 +95,22 @@ a{
     height: unset;
 }
 
-.search-form button{
-    border-radius: 50%;
-    width: 38px;
-    height: 38px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    border: none;
+.search-form .search-icon{
     position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.search-icon{
-    font-size: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: black;
+    font-size: 1.3rem;
 }
 
-.search-form:hover button{
+.search-form:hover .search-icon{
+    position: absolute;
+    right: -19px;
     background: black;
-}
-
-.search-form:hover button:hover{
-    cursor: pointer;
-}
-
-.search-form:hover button .search-icon{
     color: rgba(202, 202, 202);
+    padding: 9px;
+    border-radius: 50%;
 }
 
 .error-message{
