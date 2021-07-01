@@ -547,9 +547,7 @@ div.submit-button-container button:hover{
     .comments{
         width: 90%;
     }
-    .search-form{
-        width: 300px;
-    }
+    
     .user-dashboard{
         gap: 20px;
     }
@@ -597,9 +595,6 @@ div.submit-button-container button:hover{
     }
     .footer-columns{
         grid-template-columns: repeat(2, 1fr);
-    }
-    .search-form{
-        width: 250px;
     }
     .search-form:hover{
         width: 250px;
@@ -649,22 +644,11 @@ div.submit-button-container button:hover{
         grid-template-columns: 1fr 4fr;
         gap: 5px;
     }
-    #up{
-        height: 100%;
-        flex-direction: column;
-    }
-    .search{
-        position: relative;
-        left: 0;
-        width: 60%;
 
-    }
-    .search-form{
+    /*.search-form{
         width: 100%;
-    }
-    .search-form:hover{
-        width: 100%;
-    }
+    }*/
+    
     .dashboard{
         padding: 20px 10px;
     }
