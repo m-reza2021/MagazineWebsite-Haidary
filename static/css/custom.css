@@ -516,6 +516,35 @@ div.submit-button-container button:hover{
     display: block;
 }
 
+.facebook-this{
+    height: 20px;
+    padding: 5px 15px;
+    background-color: rgb(12, 80, 206);
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+}
+.facebook-this a{
+    color: white;
+}
+.telegram-this{
+    height: 20px;
+    padding: 5px 15px;
+    background-color: rgb(112, 162, 255);
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+}
+.telegram-this a{
+    color: white;
+}
+
+.facebook-this:hover, .telegram-this:hover{
+    box-shadow: 1px 1px 7px rgb(36, 36, 36);
+    transition: ease-in-out;
+
+}
+
 @media screen and (max-width:991px){
 
     .main-1{

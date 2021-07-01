@@ -1,6 +1,7 @@
 {% extends 'shared/_MainLayout.html' %}
 {% load static %}
 {% load jalali_tags %}
+{% load social_share %}
 
 
 {% block style %}
@@ -28,8 +29,8 @@
 
                 </div>
                 <div class="bio-left">
-                    <a class="telegram">تلگرام</a>
-                    <a class="facebook">فیسبوک</a>
+                    {% post_to_telegram "{{post.title}}" object_or_url "تلگرام" %}
+                    {% post_to_facebook object_or_url "<div>فیسبوک</div>" %}
                     {% if saved %}
                     <span class="saved-thick">ذخیره شده <i class="fas fa-check-circle"></i></span>
                     {% else %}
@@ -44,7 +45,7 @@
             </div>
             <div class="single-page-text">
                 <p>
-                    {{ post.description|safe }}
+                    {{ post.description|safe|linebreaksbr }}
                 </p>
             </div>
 

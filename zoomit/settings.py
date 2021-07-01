@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'django_render_partial',
     'jalali_date',
+    'django_social_share',
 
     'zoomit_posts',
     'zoomit_categories',
