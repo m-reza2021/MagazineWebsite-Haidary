@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import os
 from jalali_date import date2jalali, datetime2jalali
-
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 from django.db.models import Q
@@ -48,7 +48,8 @@ class PostManager(models.Manager):
 class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name='عنوان')
     excerpt = models.CharField(max_length=255, null=True, verbose_name='چکیده')
-    description = models.TextField(null=True, blank=True, verbose_name='شرح')
+    # description = models.TextField(null=True, blank=True, verbose_name='شرح')
+    description = RichTextField(blank=True, null=True)
     image = models.ImageField(upload_to=upload_path, verbose_name='تصویر')
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='نویسنده')
     issue_date = models.DateTimeField(auto_now_add=True)

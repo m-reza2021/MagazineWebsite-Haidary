@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'zoomit_counter',
     'zoomit_comments',
     'zoomit_media',
+    'ckeditor',
 ]
 
 
