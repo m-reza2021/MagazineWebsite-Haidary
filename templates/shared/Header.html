@@ -23,7 +23,8 @@
                     <a href="/login">ورود و ثبت نام</a>
                     {% endif %}
                     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                        <i class="fa fa-bars"></i>
+                        <i class="fa fa-bars bars"></i>
+                        <i class="fa fa-times times"></i>
                     </a>
                 </nav>
             </div>
@@ -33,8 +34,12 @@
       var x = document.getElementById("myTopnav");
       if (x.className === "nav") {
         x.className += " responsive";
+        document.querySelector('.bars').style.display = 'none';
+        document.querySelector('.times').style.display = 'block';
       } else {
         x.className = "nav";
+        document.querySelector('.bars').style.display = 'block';
+        document.querySelector('.times').style.display = 'none';
       }
     }
 

@@ -17,6 +17,10 @@ a{
     color: unset;
 }
 
+a.icon .times{
+        display: none;
+    }
+
 .content-part{
     display: grid;
     grid-template-columns: 2fr 4fr;
@@ -630,6 +634,7 @@ div.submit-button-container button:hover{
 }
 
 @media screen and (max-width: 480px){
+    
     .main-1-right{
         grid-template-columns: 1fr;
     }
