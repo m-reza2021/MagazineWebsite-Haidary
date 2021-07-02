@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_render_partial',
     'jalali_date',
     'django_social_share',
+    
 
     'zoomit_posts',
     'zoomit_categories',
