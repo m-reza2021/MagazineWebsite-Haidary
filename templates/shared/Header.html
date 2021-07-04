@@ -12,6 +12,7 @@
                 <nav class="nav" id="myTopnav">
                     <a href="{{ home }}">خانه</a>
                     <a href="{{ posts }}">همه مطالب</a>
+                    <a href="{{ posts }}">محصولات</a>
                     {% for category in categories %}
                     <a href="{{ category.get_absolute_url }}">{{ category }}</a>
                     {% endfor %}
